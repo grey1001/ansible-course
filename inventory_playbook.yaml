@@ -2,8 +2,8 @@
   remote_user: ubuntu
   gather_facts: false
   become: true 
-  serial: 
-  - "50%"
+  serial:
+    - "50%"
   vars:
     ansible_port: 22
     ansible_user: ubuntu

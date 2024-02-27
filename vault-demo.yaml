@@ -1,13 +1,13 @@
 - hosts: localhost
   vars:
-    vault_token: 'TOKEN'
+    vault_token: 'hvs.S7Py8a4S4ZH1DV8Wu5Cxezd5'
     vault_url: 'http://127.0.0.1:8200'
-    db_password: "{{ lookup('hashi_vault', 'secret=secret/passwords/db:data token={{ vault_token }} url={{ vault_url }}') }}"
-    system_password: "{{ lookup('hashi_vault', 'secret=secret/passwords/system:data token={{ vault_token }} url={{ vault_url }}') }}"
+    db_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/data/passwords/db token={{ vault_token }} url={{ vault_url }}') }}"
+    system_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/data/passwords/system token={{ vault_token }} url={{ vault_url }}') }}"
   tasks:
   - name: Value For db_password
     debug:
       msg: "db_password: {{ db_password }}"
   - name: Value For system_password
     debug:
-      msg: "db_password: {{ system_password }}"
+      msg: "db_password: {{ system_password }}" 

@@ -1,0 +1,34 @@
+- hosts: web
+  remote_user: root
+  become: true
+  tasks:
+  - name: Install apache
+    apt:
+      name: apache2
+      state: latest
+  - name: create index.html
+    copy:
+      src: /home/grey/Desktop/ansible-course/index.html
+      dest: /var/www/html/index.html
+    notify: 
+      - reload apache
+  - name: Curl AWS
+    shell: 
+      cmd: curl http://169.254.169.254/latest/meta-data/public-ipv4
+    register: curl
+  - name: debug curl stdout lines
+    debug:
+      var: curl.stdout_lines
+  - name: Remove apache
+    apt: 
+      name: apache2
+      state: absent
+  handlers:
+    - name: reload apache
+      service:
+        name: apache2
+        state: reloaded
+    
+
+ 
+    

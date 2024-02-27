@@ -1,9 +1,9 @@
 ---
 # tasks file for cleaner
 - name: Uninstall Apache
-  yum: 
-    name: httpd
-    state: removed
+  apt: 
+    name: apache2
+    state: absent
 - name: Remove index.html
   file:
     path: /var/www/html/index.html

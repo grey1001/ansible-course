@@ -1,10 +1,10 @@
-- name: Update apt
-  apt:
-   update_cache: yes
+---
+# tasks file for nginx
+
 - name: Install apache
   apt:
     name: apache2
-    state: present
+    state: latest
 - name: create index.html
   copy:
     src: /home/grey/Desktop/ansible-course/index.html
@@ -18,3 +18,7 @@
 - name: debug curl stdout lines
   debug:
     var: curl.stdout_lines
+# - name: Remove apache
+#   apt: 
+#     name: apache2
+#     state: absent

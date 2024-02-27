@@ -3,19 +3,19 @@
   become: yes
   vars:
     packages:
-      - httpd 
-      - nano 
-      - mysql
+      - apache2
+      - docker
+      - mysql-server
   tasks:
   - name: Install Software
-    yum:
+    apt:
       name: "{{ item }}"
-      state: installed
+      state: present
     loop: "{{ packages }}"
   - name: Remove Software
-    yum: 
+    apt: 
       name: 
-        - httpd 
-        - nano 
-        - mysql
-      state: removed
+        - apache2
+        - docker
+        - mysql-server
+      state: absent

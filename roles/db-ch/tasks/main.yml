@@ -1,0 +1,5 @@
+- name: Install Database server
+  apt:
+    name: "{{ db }}"
+    state: present
+# tasks file for db-ch
