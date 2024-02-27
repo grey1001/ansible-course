@@ -1,6 +1,6 @@
 - hosts: localhost
   vars:
-    vault_token: 'hvs.S7Py8a4S4ZH1DV8Wu5Cxezd5'
+    vault_token: 
     vault_url: 'http://127.0.0.1:8200'
     db_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/data/passwords/db token={{ vault_token }} url={{ vault_url }}') }}"
     system_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/data/passwords/system token={{ vault_token }} url={{ vault_url }}') }}"
